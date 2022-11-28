@@ -16,12 +16,13 @@ export function readPosts(): Post[] {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-    const { title, date, content } = JSON.parse(fileContents);
+    const { title, date, content, excerpt } = JSON.parse(fileContents);
     return {
       slug,
       title,
       date,
-      content
+      content,
+      excerpt,
     }
   })
 

@@ -34,6 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const post = {
     title: req.body.title,
     content: req.body.content,
+    excerpt: req.body.excerpt,
     date: new Date().toString(),
   }
   const content = Base64.encode(JSON.stringify(post))
