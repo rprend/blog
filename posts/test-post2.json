@@ -1,1 +1,1 @@
-{"title":"Test Post 2","content":{"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"Hello World!"}]},{"type":"paragraph","content":[{"type":"text","text":"hjon hjon hjon"}]}]},"date":"2022-11-28T02:12:10.172Z"}
+{"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"Hello World!"}]},{"type":"paragraph"},{"type":"paragraph","content":[{"type":"text","text":"this is a post, hopefully there will be lots of them soon."}]}]}
