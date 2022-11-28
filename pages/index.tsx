@@ -8,11 +8,12 @@ export default function Home({ allPostsData }) {
     <main>
       <h1>NIRI Blog</h1>
       <Link href="/create">Create a new post</Link>
-      {allPostsData.map(({ slug, date, title, _content }) => (
+      {allPostsData.map(({ slug, date, title, excerpt, _content }) => (
         <Link href={`/blog/${slug}`} key={slug}>
           <PostPreview
             title = {title}
             date = {date}
+            excerpt = {excerpt}
           />
         </Link>
       ))}
