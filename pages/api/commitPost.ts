@@ -21,7 +21,6 @@ async function getSHA(octokit: Octokit, path: string): Promise<string | undefine
   return sha;
 }
 
-
 export default async function handler(req, res) {
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN
@@ -35,9 +34,9 @@ export default async function handler(req, res) {
     content: req.body,
     date: new Date().toISOString()
   }
-  const content = Base64.encode(JSON.stringify(req.body))
+  const content = Base64.encode(JSON.stringify(post))
 
-  const result = await octokit.rest.repos.createOrUpdateFileContents({
+  return octokit.rest.repos.createOrUpdateFileContents({
     owner: "rprend",
     repo: "blog",
     path,
@@ -45,7 +44,4 @@ export default async function handler(req, res) {
     content,
     sha
   })
-
-  return result.status | 500;
-
 }
