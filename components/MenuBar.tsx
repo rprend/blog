@@ -3,6 +3,7 @@ import React from "react";
 
 export interface MenuBarProps {
   editor: Editor | null;
+  onSave: (editor: Editor | null) => void;
 }
 
 export const MenuBar = (props: MenuBarProps) => {
@@ -21,6 +22,7 @@ export const MenuBar = (props: MenuBarProps) => {
       <button onClick={() => props.editor?.chain().focus().toggleBlockquote().run()}>Blockquote</button>
       <button onClick={() => props.editor?.chain().focus().toggleCodeBlock().run()}>Code Block</button>
       <button onClick={() => props.editor?.chain().focus().setHorizontalRule().run()}>Horizontal Rule</button>
+      <button onClick={() => props.onSave(props.editor)}>Save</button>
     </div>
   )
 }
