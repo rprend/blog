@@ -1,8 +1,6 @@
 import { readPosts } from "../lib/ReadPosts";
 import { PostPreview } from "../components/PostPreview";
 import Link from 'next/link'
-import { GetStaticProps } from "next";
-
 
 export default function Home({ allPostsData }) {
 
@@ -10,8 +8,8 @@ export default function Home({ allPostsData }) {
     <main>
       <h1>NIRI Blog</h1>
       <Link href="/create">Create a new post</Link>
-      {allPostsData.map(({ id, date, title, content }) => (
-        <Link href={`/blog/${id}`} key={id}>
+      {allPostsData.map(({ slug, date, title, _content }) => (
+        <Link href={`/blog/${slug}`} key={slug}>
           <PostPreview
             title = {title}
             date = {date}

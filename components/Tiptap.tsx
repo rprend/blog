@@ -5,6 +5,11 @@ import React from "react";
 import { MenuBar } from "./MenuBar";
 import Underline from "@tiptap/extension-underline";
 
+export interface TiptapProps {
+  content?: string,
+  editable: boolean,
+}
+
 async function onSave(editor: Editor | null) {
   if (!editor) return
 
@@ -25,31 +30,39 @@ async function onSave(editor: Editor | null) {
   console.log(res)
 }
 
-const Tiptap = () => {
+const Tiptap = (props: TiptapProps) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
       CharacterCount,
       Underline
     ],
-    content: "<p>Hello World!</p>",
+    content: props.content,
+    editable: props.editable
   })
-
-  return (
-    <div>
-      <input type="text" placeholder="Title" id="title-text-input" />
-      <MenuBar
-        editor={editor}
-        onSave={onSave}
-      />
-      <EditorContent editor={editor} />
-      <div className="character-count">
-        {editor?.storage.characterCount.characters()} characters
-        <br />
-        {editor?.storage.characterCount.words()} words
+  if (props.editable) {
+    return (
+      <div>
+        <input type="text" placeholder="Title" id="title-text-input" />
+        <MenuBar
+          editor={editor}
+          onSave={onSave}
+        />
+        <EditorContent editor={editor} />
+        <div className="character-count">
+          {editor?.storage.characterCount.characters()} characters
+          <br />
+          {editor?.storage.characterCount.words()} words
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (
+      <div>
+        <EditorContent editor={editor} />
+      </div>
+    )
+  }
 }
 
 export default Tiptap
