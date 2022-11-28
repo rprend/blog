@@ -1,12 +1,29 @@
-import Tiptap from "../components/Tiptap";
+import { readPosts } from "../lib/ReadPosts";
+import { PostPreview } from "../components/PostPreview";
+import Link from 'next/link'
 
-export default function Home() {
+export default function Home({ allPostsData }) {
+
   return (
     <main>
       <h1>NIRI Blog</h1>
-      <div className="create-post-container">
-        <Tiptap />
-      </div>
+      <Link href="/create">Create a new post</Link>
+      {allPostsData.map(({ id, date, title, content }) => (
+        <Link href={`/blog/${id}`} key={id}>
+          <PostPreview
+            title = {title}
+            date = {date}
+          />
+        </Link>
+      ))}
     </main>
   )
+}
+
+export function getStaticProps() {
+  return {
+    props: {
+      allPostsData: readPosts()
+    }
+  }
 }
