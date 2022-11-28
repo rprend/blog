@@ -2,6 +2,7 @@ import path from 'path'
 import fs from 'fs'
 import { readPosts } from '../../lib/ReadPosts'
 import Tiptap from '../../components/Tiptap'
+import React from 'react'
 
 export default function Post(params) {
   const post = JSON.parse(params.post)

@@ -27,6 +27,13 @@ function generateExcerpt(editor: Editor) {
 
 const Tiptap = (props: TiptapProps) => {
   let router = useRouter()
+  const [editing, setEditing] = React.useState(props.editable)
+
+  function setEditMode(direction: boolean) {
+    setEditing(direction)
+    editor.options.editable = direction;
+    editor.view.update(editor.view.props);
+  }
 
   function onSave(editor: Editor | null): void {
     if (!editor) return
@@ -45,7 +52,7 @@ const Tiptap = (props: TiptapProps) => {
         content: json,
         excerpt: exceprt
       })
-    }).then(response => {
+    }).then(_response => {
       router.push('/')
     })
   }
@@ -62,14 +69,16 @@ const Tiptap = (props: TiptapProps) => {
       Underline
     ],
     content,
-    editable: props.editable
+    editable: editing
   })
-  if (props.editable) {
+
+  if (editing) {
     return (
       <div>
         <MenuBar
           editor={editor}
           onSave={onSave}
+          onPreview={() => setEditMode(false)}
         />
         <EditorContent editor={editor} />
         <div className="character-count">
@@ -82,6 +91,7 @@ const Tiptap = (props: TiptapProps) => {
   } else {
     return (
       <div>
+        <button onClick={() => setEditMode(true)}>Edit</button>
         <EditorContent editor={editor} />
       </div>
     )

@@ -4,6 +4,7 @@ import React from "react";
 export interface MenuBarProps {
   editor: Editor | null;
   onSave: (editor: Editor | null) => void;
+  onPreview: (editor: Editor | null) => void;
 }
 
 
@@ -17,6 +18,7 @@ export const MenuBar = (props: MenuBarProps) => {
 
   return (
     <div>
+      <button onClick={props.onPreview}>Preview</button>
       <button onClick={() => props.editor?.chain().focus().toggleBold().run()}>Bold</button>
       <button onClick={() => props.editor?.chain().focus().toggleItalic().run()}>Italic</button>
       <button onClick={() => props.editor?.chain().focus().toggleUnderline().run()}>Underline</button>
