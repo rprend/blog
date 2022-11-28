@@ -18,7 +18,7 @@ export const MenuBar = (props: MenuBarProps) => {
 
   return (
     <div>
-      <button onClick={props.onPreview}>Preview</button>
+      <button onClick={() => props.onPreview}>Preview</button>
       <button onClick={() => props.editor?.chain().focus().toggleBold().run()}>Bold</button>
       <button onClick={() => props.editor?.chain().focus().toggleItalic().run()}>Italic</button>
       <button onClick={() => props.editor?.chain().focus().toggleUnderline().run()}>Underline</button>
