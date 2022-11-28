@@ -29,6 +29,12 @@ export default async function handler(req, res) {
 
   const path = "posts/test-post2.json"
   const sha = await getSHA(octokit, path);
+
+  const post = {
+    title: "Test Post 2",
+    content: req.body,
+    date: new Date().toISOString()
+  }
   const content = Base64.encode(JSON.stringify(req.body))
 
   const result = await octokit.rest.repos.createOrUpdateFileContents({
