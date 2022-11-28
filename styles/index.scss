@@ -1,0 +1,12 @@
+main {
+  margin-left: 10px;
+
+  .create-post-container {
+    width: 80%;
+    margin-left: 20px;
+
+    .ProseMirror:focus-visible {
+      outline: 1px solid black;
+    }
+  }
+}
