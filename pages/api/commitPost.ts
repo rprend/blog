@@ -42,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const commit_type = sha ? "Update" : "Create";
   const message = commit_type + " post: " + post.title;
 
-  return octokit.rest.repos.createOrUpdateFileContents({
+  const result = await octokit.rest.repos.createOrUpdateFileContents({
     owner: "rprend",
     repo: "blog",
     path,
@@ -50,4 +50,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     content,
     sha
   })
+
+  res.end(JSON.stringify(result.data));
 }

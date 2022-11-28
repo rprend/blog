@@ -8,12 +8,11 @@ export default function Post(params) {
 
   return (
     <main>
-      <h1>{post.title}</h1>
-      <h3>Last updated {post.date}</h3>
       <Tiptap
         editable={false}
         content={post.content}
       />
+      <h3>Last updated {post.date}</h3>
     </main>
   )
 }

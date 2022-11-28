@@ -4,6 +4,7 @@ import StarterKit from "@tiptap/starter-kit";
 import React from "react";
 import { MenuBar } from "./MenuBar";
 import Underline from "@tiptap/extension-underline";
+import { useRouter } from 'next/router'
 
 export interface TiptapProps {
   content?: string,
@@ -24,32 +25,31 @@ function generateExcerpt(editor: Editor) {
   return excerpt
 }
 
-async function onSave(editor: Editor | null) {
-  if (!editor) return
-
-  const json = editor.getJSON()
-  console.log(json)
-  console.log(editor.state.doc.firstChild?.textContent)
-  console.log(generateExcerpt(editor))
-
-  const title = editor.state.doc.firstChild?.textContent ?? "Untitled"
-  const exceprt = generateExcerpt(editor)
-
-  const res = await fetch('/api/commitPost', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      title,
-      content: json,
-      excerpt: exceprt
-    })
-  })
-  console.log(res)
-}
-
 const Tiptap = (props: TiptapProps) => {
+  let router = useRouter()
+
+  function onSave(editor: Editor | null): void {
+    if (!editor) return
+
+    const json = editor.getJSON()
+    const title = editor.state.doc.firstChild?.textContent ?? "Untitled"
+    const exceprt = generateExcerpt(editor)
+
+    fetch('/api/commitPost', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title,
+        content: json,
+        excerpt: exceprt
+      })
+    }).then(response => {
+      router.push('/')
+    })
+  }
+
   let content = props.content
   if (props.content == null) {
     content = "<h1>Insert Title Here</h1><p>Start typing here...</p>"
