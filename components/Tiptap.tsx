@@ -9,7 +9,7 @@ async function onSave(editor: Editor | null) {
   if (!editor) return
 
   const json = editor.getJSON()
-  console.log(json)
+
   const res = await fetch('/api/commitPost', {
     method: 'POST',
     headers: {

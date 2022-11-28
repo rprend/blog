@@ -26,14 +26,12 @@ export default async function handler(req, res) {
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN
   })
-  console.log(req.body)
-  res.status(200).json({ name: 'John Doe' })
 
   const path = "posts/test-post2.json"
   const sha = await getSHA(octokit, path);
   const content = Base64.encode(JSON.stringify(req.body))
 
-  const result = octokit.rest.repos.createOrUpdateFileContents({
+  const result = await octokit.rest.repos.createOrUpdateFileContents({
     owner: "rprend",
     repo: "blog",
     path,
@@ -42,7 +40,6 @@ export default async function handler(req, res) {
     sha
   })
 
-  return result
-
+  return result.status | 500;
 
 }
