@@ -5,11 +5,19 @@ import React from "react";
 import { MenuBar } from "./MenuBar";
 import Underline from "@tiptap/extension-underline";
 
-function onSave(editor: Editor | null) {
+async function onSave(editor: Editor | null) {
   if (!editor) return
 
-  const html = editor.getHTML()
-  console.log(html)
+  const json = editor.getJSON()
+  console.log(json)
+  const res = await fetch('/api/commitPost', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(json)
+  })
+  console.log(res)
 }
 
 const Tiptap = () => {
