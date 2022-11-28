@@ -1,7 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 
-export function readPosts() {
+export interface Post {
+  title: string;
+  content: string;
+  date: string;
+  id: string;
+}
+
+export function readPosts(): Post[] {
   const postsDirectory = path.join(process.cwd(), 'posts');
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map(fileName => {

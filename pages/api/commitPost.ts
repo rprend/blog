@@ -1,5 +1,7 @@
 import { Octokit } from "@octokit/rest"
 import { Base64 } from "js-base64"
+import { NextApiRequest, NextApiResponse } from "next";
+import { GenerateSlug } from "../../lib/GenerateSlug";
 
 async function getSHA(octokit: Octokit, path: string): Promise<string | undefined> {
   const result = await octokit.repos.getContent({
@@ -21,26 +23,29 @@ async function getSHA(octokit: Octokit, path: string): Promise<string | undefine
   return sha;
 }
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN
   })
 
-  const path = "posts/test-post2.json"
+  const path = "posts/" + GenerateSlug(req.body.title) + ".json";
   const sha = await getSHA(octokit, path);
 
   const post = {
-    title: "Test Post 2",
-    content: req.body,
-    date: new Date().toISOString()
+    title: req.body.title,
+    content: req.body.content,
+    date: new Date().toISOString(),
   }
   const content = Base64.encode(JSON.stringify(post))
+
+  const commit_type = sha ? "Update" : "Create";
+  const message = commit_type + " post: " + post.title;
 
   return octokit.rest.repos.createOrUpdateFileContents({
     owner: "rprend",
     repo: "blog",
     path,
-    message: "Create test.json",
+    message,
     content,
     sha
   })

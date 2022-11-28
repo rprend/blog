@@ -9,13 +9,18 @@ async function onSave(editor: Editor | null) {
   if (!editor) return
 
   const json = editor.getJSON()
+  const input_element = document.getElementById("title-text-input") as HTMLInputElement;
+  const title = input_element.value;
 
   const res = await fetch('/api/commitPost', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(json)
+    body: JSON.stringify({
+      title,
+      content: json
+    })
   })
   console.log(res)
 }
@@ -32,6 +37,7 @@ const Tiptap = () => {
 
   return (
     <div>
+      <input type="text" placeholder="Title" id="title-text-input" />
       <MenuBar
         editor={editor}
         onSave={onSave}

@@ -1,6 +1,8 @@
 import { readPosts } from "../lib/ReadPosts";
 import { PostPreview } from "../components/PostPreview";
 import Link from 'next/link'
+import { GetStaticProps } from "next";
+
 
 export default function Home({ allPostsData }) {
 
