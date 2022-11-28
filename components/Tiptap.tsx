@@ -3,12 +3,14 @@ import CharacterCount from '@tiptap/extension-character-count'
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
 import { MenuBar } from "./MenuBar";
+import Underline from "@tiptap/extension-underline";
 
 const Tiptap = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,
       CharacterCount,
+      Underline
     ],
     content: "<p>Hello World!</p>",
   })

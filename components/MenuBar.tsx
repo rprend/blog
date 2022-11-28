@@ -10,6 +10,7 @@ export const MenuBar = (props: MenuBarProps) => {
     <div>
       <button onClick={() => props.editor?.chain().focus().toggleBold().run()}>Bold</button>
       <button onClick={() => props.editor?.chain().focus().toggleItalic().run()}>Italic</button>
+      <button onClick={() => props.editor?.chain().focus().toggleUnderline().run()}>Underline</button>
       <button onClick={() => props.editor?.chain().focus().toggleCode().run()}>Code</button>
       <button onClick={() => props.editor?.chain().focus().toggleStrike().run()}>Strike</button>
       <button onClick={() => props.editor?.chain().focus().toggleBulletList().run()}>Bullet List</button>
