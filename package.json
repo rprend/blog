@@ -9,17 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@octokit/openapi-types": "^14.0.0",
     "@octokit/rest": "^19.0.5",
     "@tiptap/extension-character-count": "^2.0.0-beta.204",
     "@tiptap/extension-underline": "^2.0.0-beta.204",
     "@tiptap/react": "^2.0.0-beta.204",
     "@tiptap/starter-kit": "^2.0.0-beta.204",
+    "js-base64": "^3.7.3",
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.56.1"
   },
   "devDependencies": {
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5"
   }
