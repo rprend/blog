@@ -1,4 +1,4 @@
-import { useEditor, EditorContent, Editor } from "@tiptap/react";
+import { useEditor, EditorContent, Editor, JSONContent, Node } from "@tiptap/react";
 import CharacterCount from '@tiptap/extension-character-count'
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
@@ -10,12 +10,30 @@ export interface TiptapProps {
   editable: boolean,
 }
 
+function generateExcerpt(editor: Editor) {
+  // The first block is the title. the excerpt starts at the second block.
+  let idx = 1;
+  let excerpt = "";
+  while (excerpt.length < 100) {
+    const node = editor.state.doc.maybeChild(idx)
+    if (!node) break
+    // this is not going to be perfectly 100 every time but it's close enough
+    excerpt += " " + node.textContent.substring(0, 100)
+    idx += 1
+  }
+  return excerpt
+}
+
 async function onSave(editor: Editor | null) {
   if (!editor) return
 
   const json = editor.getJSON()
-  const input_element = document.getElementById("title-text-input") as HTMLInputElement;
-  const title = input_element.value;
+  console.log(json)
+  console.log(editor.state.doc.firstChild?.textContent)
+  console.log(generateExcerpt(editor))
+
+  const title = editor.state.doc.firstChild?.textContent ?? "Untitled"
+  const exceprt = generateExcerpt(editor)
 
   const res = await fetch('/api/commitPost', {
     method: 'POST',
@@ -24,26 +42,31 @@ async function onSave(editor: Editor | null) {
     },
     body: JSON.stringify({
       title,
-      content: json
+      content: json,
+      excerpt: exceprt
     })
   })
   console.log(res)
 }
 
 const Tiptap = (props: TiptapProps) => {
+  let content = props.content
+  if (props.content == null) {
+    content = "<h1>Insert Title Here</h1><p>Start typing here...</p>"
+  }
+
   const editor = useEditor({
     extensions: [
       StarterKit,
       CharacterCount,
       Underline
     ],
-    content: props.content,
+    content,
     editable: props.editable
   })
   if (props.editable) {
     return (
       <div>
-        <input type="text" placeholder="Title" id="title-text-input" />
         <MenuBar
           editor={editor}
           onSave={onSave}
