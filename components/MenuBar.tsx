@@ -4,7 +4,7 @@ import React from "react";
 export interface MenuBarProps {
   editor: Editor | null;
   onSave: (editor: Editor | null) => void;
-  onPreview: (editor: Editor | null) => void;
+  onPreview: () => void;
 }
 
 
