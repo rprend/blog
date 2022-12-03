@@ -26,7 +26,7 @@ function generateExcerpt(editor: Editor) {
 }
 
 const Tiptap = (props: TiptapProps) => {
-  let router = useRouter()
+  const router = useRouter()
   const [editing, setEditing] = React.useState(props.editable)
 
   function setEditMode(direction: boolean) {
