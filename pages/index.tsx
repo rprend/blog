@@ -1,8 +1,15 @@
 import { readPosts } from "../lib/ReadPosts";
 import { PostPreview } from "../components/PostPreview";
 import Link from 'next/link'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 export default function Home({ allPostsData }) {
+  const { data: session } = useSession();
+
+  if (!session) {
+    console.log("Not logged in")
+    console.log(session)
+  }
 
   return (
     <main>
