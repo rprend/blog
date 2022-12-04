@@ -18,8 +18,7 @@ export default function Home({ allPostsData }) {
               <PostPreview
                 title="Create a new post"
                 excerpt="Click here to create a new post"
-              >
-              </PostPreview>
+              ></PostPreview>
             </Link>
           }
           {allPostsData.map(({ slug, date, title, excerpt, _content }) => (

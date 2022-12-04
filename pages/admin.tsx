@@ -5,7 +5,6 @@ export default function Admin() {
   if (!session) {
     return (<button onClick={() => signIn()}>Not logged in</button>)
   }
-  console.log
   return (
     <main>
       <h1>Admin</h1>
