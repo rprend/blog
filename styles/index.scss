@@ -2,6 +2,11 @@ main {
   margin-left: 10px;
   margin-right: 10px;
 
+  p {
+    line-height: 1.66;
+    margin: 0 0 2em 0;
+  }
+
   .homepage-container {
     display: flex;
 
@@ -46,6 +51,8 @@ main {
       flex-direction: column;
       .sidebar {
         width: 100%;
+        height: fit-content;
+        border-right: none;
       }
       .posts {
         grid-template-columns: repeat(1, 1fr);
