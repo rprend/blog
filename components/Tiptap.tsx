@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react'
 export interface TiptapProps {
   content?: string,
   editable: boolean,
+  updated?: Date
 }
 
 function generateExcerpt(editor: Editor) {
@@ -77,27 +78,26 @@ const Tiptap = (props: TiptapProps) => {
 
   if (editing) {
     return (
-      <div>
+      <div className="post-container">
         <MenuBar
           editor={editor}
           onSave={onSave}
           onPreview={() => setEditMode(false)}
         />
-        <EditorContent editor={editor} />
         <div className="character-count">
-          {editor?.storage.characterCount.characters()} characters
-          <br />
-          {editor?.storage.characterCount.words()} words
+          <b>Word Count: </b>{editor?.storage.characterCount.characters()} characters, {editor?.storage.characterCount.words()} words
         </div>
+        <EditorContent editor={editor} />
       </div>
     )
   } else {
     return (
-      <div>
+      <div className="post-container">
         { session &&
           <button onClick={() => setEditMode(true)}>Edit</button>
         }
         <EditorContent editor={editor} />
+        <h5>{`Last updated ${props.updated}`}</h5>
       </div>
     )
   }

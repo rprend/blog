@@ -1,26 +1,38 @@
 import { readPosts } from "../lib/ReadPosts";
 import { PostPreview } from "../components/PostPreview";
 import Link from 'next/link'
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
 export default function Home({ allPostsData }) {
   const { data: session } = useSession();
 
   return (
     <main>
-      <h1>NIRI Blog</h1>
-      {session &&
-        <Link href="/create">Create a new post</Link>
-      }
-      {allPostsData.map(({ slug, date, title, excerpt, _content }) => (
-        <Link href={`/blog/${slug}`} key={slug}>
-          <PostPreview
-            title = {title}
-            date = {date}
-            excerpt = {excerpt}
-          />
-        </Link>
-      ))}
+      <div className="homepage-container">
+        <div className="sidebar">
+          <h1>NIRI Blog</h1>
+        </div>
+        <div className="posts">
+          {session &&
+            <Link href="/create">
+              <PostPreview
+                title="Create a new post"
+                excerpt="Click here to create a new post"
+              >
+              </PostPreview>
+            </Link>
+          }
+          {allPostsData.map(({ slug, date, title, excerpt, _content }) => (
+            <Link href={`/blog/${slug}`} key={slug}>
+              <PostPreview
+                title = {title}
+                date = {date}
+                excerpt = {excerpt}
+              />
+            </Link>
+          ))}
+        </div>
+      </div>
     </main>
   )
 }

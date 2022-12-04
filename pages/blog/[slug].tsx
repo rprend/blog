@@ -3,19 +3,17 @@ import fs from 'fs'
 import { readPosts } from '../../lib/ReadPosts'
 import Tiptap from '../../components/Tiptap'
 import React from 'react'
-import { useSession } from 'next-auth/react'
 
 export default function Post(params) {
   const post = JSON.parse(params.post)
-  const { data: session } = useSession();
 
   return (
     <main>
       <Tiptap
         editable={false}
         content={post.content}
+        updated={post.date}
       />
-      <h3>Last updated {post.date}</h3>
     </main>
   )
 }
