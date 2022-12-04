@@ -5,6 +5,7 @@ import React from "react";
 import { MenuBar } from "./MenuBar";
 import Underline from "@tiptap/extension-underline";
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 
 export interface TiptapProps {
   content?: string,
@@ -27,7 +28,9 @@ function generateExcerpt(editor: Editor) {
 
 const Tiptap = (props: TiptapProps) => {
   const router = useRouter()
-  const [editing, setEditing] = React.useState(props.editable)
+  const { data: session } = useSession();
+
+  const [editing, setEditing] = React.useState(session != null && props.editable)
 
   function setEditMode(direction: boolean) {
     setEditing(direction)
@@ -91,7 +94,9 @@ const Tiptap = (props: TiptapProps) => {
   } else {
     return (
       <div>
-        <button onClick={() => setEditMode(true)}>Edit</button>
+        { session &&
+          <button onClick={() => setEditMode(true)}>Edit</button>
+        }
         <EditorContent editor={editor} />
       </div>
     )
