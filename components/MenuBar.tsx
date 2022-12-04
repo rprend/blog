@@ -3,8 +3,8 @@ import React from "react";
 
 export interface MenuBarProps {
   editor: Editor | null;
-  onSave: (editor: Editor | null) => void;
-  onPreview: (editor: Editor) => void;
+  onSave: () => void;
+  onPreview: () => void;
 }
 
 
@@ -13,7 +13,7 @@ export const MenuBar = (props: MenuBarProps) => {
 
   function onClickSave() {
     setIsPublishing(true);
-    props.onSave(props.editor)
+    props.onSave()
   }
 
   return (

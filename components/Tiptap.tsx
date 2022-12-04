@@ -1,4 +1,4 @@
-import { useEditor, EditorContent, Editor, JSONContent, Node } from "@tiptap/react";
+import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import CharacterCount from '@tiptap/extension-character-count'
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
@@ -39,7 +39,7 @@ const Tiptap = (props: TiptapProps) => {
     editor.view.update(editor.view.props);
   }
 
-  function onSave(editor: Editor | null): void {
+  function onSave(): void {
     if (!editor) return
 
     const json = editor.getJSON()

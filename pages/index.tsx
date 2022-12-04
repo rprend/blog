@@ -21,7 +21,7 @@ export default function Home({ allPostsData }) {
               ></PostPreview>
             </Link>
           }
-          {allPostsData.map(({ slug, date, title, excerpt, _content }) => (
+          {allPostsData.map(({ slug, date, title, excerpt }) => (
             <Link href={`/blog/${slug}`} key={slug}>
               <PostPreview
                 title = {title}
