@@ -14,10 +14,6 @@ export interface MenuBarProps {
 export const MenuBar = (props: MenuBarProps) => {
   const [isPublishing, setIsPublishing] = React.useState(false);
 
-  function onClickSave() {
-    setIsPublishing(true);
-    props.onSave()
-  }
   function bold() {
     props.editor?.chain().focus().toggleBold().run()
   }
