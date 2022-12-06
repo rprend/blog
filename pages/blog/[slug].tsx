@@ -3,6 +3,8 @@ import fs from 'fs'
 import { readPosts } from '../../lib/ReadPosts'
 import Tiptap from '../../components/Tiptap'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 export default function Post(params) {
   const post = JSON.parse(params.post)

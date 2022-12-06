@@ -1,5 +1,8 @@
 import { Editor } from "@tiptap/react";
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass, faBold, faItalic, faUnderline, faCode, faStrikethrough, faList, faListOl, faHeading, faQuoteLeft, faCodeBranch, faRulerHorizontal, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+
 
 export interface MenuBarProps {
   editor: Editor | null;
@@ -15,27 +18,98 @@ export const MenuBar = (props: MenuBarProps) => {
     setIsPublishing(true);
     props.onSave()
   }
+  function bold() {
+    props.editor?.chain().focus().toggleBold().run()
+  }
+
+  function italic() {
+    props.editor?.chain().focus().toggleItalic().run()
+  }
+
+  function underline() {
+    props.editor?.chain().focus().toggleUnderline().run()
+  }
+
+  function code() {
+    props.editor?.chain().focus().toggleCode().run()
+  }
+
+  function strikethrough() {
+    props.editor?.chain().focus().toggleStrike().run()
+  }
+
+  function bullet_list() {
+    props.editor?.chain().focus().toggleBulletList().run()
+  }
+
+  function ordered_list() {
+    props.editor?.chain().focus().toggleOrderedList().run()
+  }
+
+  function heading_one() {
+    props.editor?.chain().focus().toggleHeading({ level: 1 }).run()
+  }
+
+  function blockquote() {
+    props.editor?.chain().focus().toggleBlockquote().run()
+  }
+
+  function code_block() {
+    props.editor?.chain().focus().toggleCodeBlock().run()
+  }
+
+  function horizontal_rule() {
+    props.editor?.chain().focus().setHorizontalRule().run()
+  }
+
+  function save() {
+    if (!isPublishing) {
+      setIsPublishing(true);
+      props.onSave()
+    }
+  }
 
   return (
-    <div>
-      <button onClick={() => props.onPreview()}>Preview</button>
-      <button onClick={() => props.editor?.chain().focus().toggleBold().run()}>Bold</button>
-      <button onClick={() => props.editor?.chain().focus().toggleItalic().run()}>Italic</button>
-      <button onClick={() => props.editor?.chain().focus().toggleUnderline().run()}>Underline</button>
-      <button onClick={() => props.editor?.chain().focus().toggleCode().run()}>Code</button>
-      <button onClick={() => props.editor?.chain().focus().toggleStrike().run()}>Strike</button>
-      <button onClick={() => props.editor?.chain().focus().toggleBulletList().run()}>Bullet List</button>
-      <button onClick={() => props.editor?.chain().focus().toggleOrderedList().run()}>Ordered List</button>
-      <button onClick={() => props.editor?.chain().focus().toggleHeading({ level: 1 }).run()}>Heading 1</button>
-      <button onClick={() => props.editor?.chain().focus().toggleHeading({ level: 2 }).run()}>Heading 2</button>
-      <button onClick={() => props.editor?.chain().focus().toggleHeading({ level: 3 }).run()}>Heading 3</button>
-      <button onClick={() => props.editor?.chain().focus().toggleBlockquote().run()}>Blockquote</button>
-      <button onClick={() => props.editor?.chain().focus().toggleCodeBlock().run()}>Code Block</button>
-      <button onClick={() => props.editor?.chain().focus().setHorizontalRule().run()}>Horizontal Rule</button>
-      <button
-        onClick={onClickSave}
-        disabled={isPublishing}
-      >Publish</button>
+    <div className="menu-container">
+      <div onClick={props.onPreview} style={{"margin": "0 40px 0 0"}}>
+        <FontAwesomeIcon icon={faMagnifyingGlass} transform="grow-20" />
+      </div>
+      <div onClick={bold}>
+        <FontAwesomeIcon icon={faBold} transform="grow-10" />
+      </div>
+      <div onClick={italic}>
+        <FontAwesomeIcon icon={faItalic} transform="grow-10" />
+      </div>
+      <div onClick={underline}>
+        <FontAwesomeIcon icon={faUnderline} transform="grow-10" />
+      </div>
+      <div onClick={code}>
+        <FontAwesomeIcon icon={faCode} transform="grow-10" />
+      </div>
+      <div onClick={strikethrough}>
+        <FontAwesomeIcon icon={faStrikethrough} transform="grow-10" />
+      </div>
+      <div onClick={bullet_list}>
+        <FontAwesomeIcon icon={faList} transform="grow-10" />
+      </div>
+      <div onClick={ordered_list}>
+        <FontAwesomeIcon icon={faListOl} transform="grow-10" />
+      </div>
+      <div onClick={heading_one}>
+        <FontAwesomeIcon icon={faHeading} transform="grow-10" />
+      </div>
+      <div onClick={blockquote}>
+        <FontAwesomeIcon icon={faQuoteLeft} transform="grow-10" />
+      </div>
+      <div onClick={code_block}>
+        <FontAwesomeIcon icon={faCodeBranch} transform="grow-10" />
+      </div>
+      <div >
+        <FontAwesomeIcon onClick={horizontal_rule} icon={faRulerHorizontal} transform="grow-10" />
+      </div>
+      <div className="save-button" onClick={save}>
+        <FontAwesomeIcon icon={faFloppyDisk} transform="grow-20"/>
+      </div>
     </div>
   )
 }

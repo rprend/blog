@@ -6,6 +6,9 @@ import { MenuBar } from "./MenuBar";
 import Underline from "@tiptap/extension-underline";
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+
 
 export interface TiptapProps {
   content?: string,
@@ -78,7 +81,7 @@ const Tiptap = (props: TiptapProps) => {
 
   if (editing) {
     return (
-      <div className="post-container">
+      <article>
         <MenuBar
           editor={editor}
           onSave={onSave}
@@ -88,17 +91,19 @@ const Tiptap = (props: TiptapProps) => {
           <b>Word Count: </b>{editor?.storage.characterCount.characters()} characters, {editor?.storage.characterCount.words()} words
         </div>
         <EditorContent editor={editor} />
-      </div>
+      </article>
     )
   } else {
     return (
-      <div className="post-container">
+      <article>
         { session &&
-          <button onClick={() => setEditMode(true)}>Edit</button>
+          <div onClick={() => setEditMode(true)} className="icon">
+          <FontAwesomeIcon icon={faPenToSquare} transform="grow-20" />
+          </div>
         }
         <EditorContent editor={editor} />
         <h5>{`Last updated ${props.updated}`}</h5>
-      </div>
+      </article>
     )
   }
 }
