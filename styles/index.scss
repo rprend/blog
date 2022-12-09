@@ -2,25 +2,31 @@ html {
   font-size: 15px;
 }
 
+.sidebar {
+  width: 250px;
+  margin-right: 50px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 main {
-  margin-left: 10px;
+  margin-left: 260px;
   margin-right: 10px;
 
   .homepage-container {
-    display: flex;
 
-    .sidebar {
-      width: 250px;
-      margin-right: 50px;
-      text-align: center;
-      height: 100vh;
-      border-right: 1px solid #ccc;
+    hr {
+      width: 100%;
     }
 
     .posts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0 40px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 40vh;
     }
     a {
       &:hover {
