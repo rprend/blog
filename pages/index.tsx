@@ -2,6 +2,7 @@ import { readPosts } from "../lib/ReadPosts";
 import { PostPreview } from "../components/PostPreview";
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import Sidebar from "../components/Sidebar";
 
 export default function Home({ allPostsData }) {
   const { data: session } = useSession();
@@ -9,9 +10,7 @@ export default function Home({ allPostsData }) {
   return (
     <main>
       <div className="homepage-container">
-        <div className="sidebar">
-          <h1>NIRI Blog</h1>
-        </div>
+        <Sidebar></Sidebar>
         <div className="posts">
           {session &&
             <Link href="/create">
@@ -19,6 +18,7 @@ export default function Home({ allPostsData }) {
                 title="Create a new post"
                 excerpt="Click here to create a new post"
               ></PostPreview>
+            <hr />
             </Link>
           }
           {allPostsData.map(({ slug, date, title, excerpt }) => (
@@ -28,6 +28,7 @@ export default function Home({ allPostsData }) {
                 date = {date}
                 excerpt = {excerpt}
               />
+            <hr />
             </Link>
           ))}
         </div>
