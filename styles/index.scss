@@ -46,8 +46,6 @@ main {
     margin-bottom: 5px;
 
     > div {
-      min-width: 30px;
-      min-height: 30px;
     }
 
     svg:hover {
@@ -74,7 +72,7 @@ h1 {
 article {
   width: 800px;
   position: relative;
-  margin: 5rem auto;
+  margin: 5rem 0;
 
   .ProseMirror:focus-visible {
     outline: none;
@@ -100,6 +98,7 @@ article {
         width: 100%;
         height: fit-content;
         border-right: none;
+        position: absolute;
       }
       .posts {
         grid-template-columns: repeat(1, 1fr);

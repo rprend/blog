@@ -1,7 +1,7 @@
 import { Editor } from "@tiptap/react";
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faCircle, faBold, faItalic, faUnderline, faCode, faStrikethrough, faList, faListOl, faHeading, faQuoteLeft, faCodeBranch, faRulerHorizontal, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faBold, faItalic, faUnderline, faCode, faStrikethrough, faList, faListOl, faHeading, faQuoteLeft, faCodeBranch, faRulerHorizontal, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
 
 
 export interface MenuBarProps {
@@ -71,79 +71,76 @@ export const MenuBar = (props: MenuBarProps) => {
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           transform="grow-20"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={bold}>
-        <span>
-        <FontAwesomeIcon icon={faCircle} />
         <FontAwesomeIcon
           icon={faBold}
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
-        </span>
       </div>
       <div onClick={italic}>
         <FontAwesomeIcon
           icon={faItalic}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={underline}>
         <FontAwesomeIcon
           icon={faUnderline}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={code}>
         <FontAwesomeIcon
           icon={faCode}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={strikethrough}>
         <FontAwesomeIcon
           icon={faStrikethrough}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={bullet_list}>
         <FontAwesomeIcon
           icon={faList}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={ordered_list}>
         <FontAwesomeIcon
           icon={faListOl}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={heading_one}>
         <FontAwesomeIcon
           icon={faHeading}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={blockquote}>
         <FontAwesomeIcon
           icon={faQuoteLeft}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div onClick={code_block}>
         <FontAwesomeIcon
           icon={faCodeBranch}
           transform="grow-10"
-          className={props.editor.isActive('bold') ? 'is-active' : ''}
+          className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
       <div >

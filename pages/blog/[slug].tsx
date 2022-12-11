@@ -8,6 +8,7 @@ export default function Post(params) {
   const post = JSON.parse(params.post)
 
   return (
+    <>
     <main>
       <Tiptap
         editable={false}
@@ -15,6 +16,7 @@ export default function Post(params) {
         updated={post.date}
       />
     </main>
+    </>
   )
 }
 
