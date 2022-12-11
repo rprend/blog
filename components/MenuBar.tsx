@@ -77,6 +77,7 @@ export const MenuBar = (props: MenuBarProps) => {
       <div onClick={bold}>
         <FontAwesomeIcon
           icon={faBold}
+          transform="grow-10"
           className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>

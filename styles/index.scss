@@ -46,6 +46,8 @@ main {
     margin-bottom: 5px;
 
     > div {
+      min-width: 30px;
+      min-height: 30px;
     }
 
     svg:hover {
