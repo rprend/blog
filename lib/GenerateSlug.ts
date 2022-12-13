@@ -8,7 +8,8 @@ export function GenerateSlug(title: string): string {
   //   return fileName.replace(/\.json$/, '');
   // })
 
-  const slug = title.toLowerCase().replace(/ /g, '-');
+  // Replace spaces with dashes and remove non-alphanumeric characters
+  const slug = title.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '');
   // if (slug in fileNames) {
   //   let i = 1;
   //   while (slug + i in fileNames) {
