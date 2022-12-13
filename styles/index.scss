@@ -42,21 +42,28 @@ main {
   .menu-container {
     display: flex;
     flex-direction: row;
-    gap: 12px;
-    margin-bottom: 5px;
+    gap: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
 
     > div {
       min-width: 30px;
+      padding: 2px;
       min-height: 30px;
+
+      &:hover {
+        color: #2d2da8;
+      }
+
+      &.is-active {
+        color: #2d2da8;
+      }
     }
 
     svg:hover {
       cursor: pointer;
     }
 
-    .save-button {
-      margin-left: auto;
-    }
   }
 }
 
@@ -93,9 +100,16 @@ article {
   }
 
   &.float-right {
-    position: relative;
     float: right;
     right: -75px;
+  }
+
+  &:hover {
+    color: #2d2da8;
+  }
+
+  &.is-active {
+    color: #2d2da8;
   }
 }
 

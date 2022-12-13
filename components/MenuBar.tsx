@@ -67,88 +67,84 @@ export const MenuBar = (props: MenuBarProps) => {
 
   return (
     <div className="menu-container">
-      <div onClick={props.onPreview} style={{"margin": "0 40px 0 0"}}>
+      <div onClick={props.onPreview} className="icon float-left">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
-          transform="grow-20"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='3x'
         />
       </div>
-      <div onClick={bold}>
+      <div onClick={bold} className={props.editor?.isActive('bold') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faBold}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div onClick={italic}>
+      <div onClick={italic} className={props.editor?.isActive('italic') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faItalic}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div onClick={underline}>
+      <div onClick={underline} className={props.editor?.isActive('underline') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faUnderline}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div onClick={code}>
+      <div onClick={code} className={props.editor?.isActive('code') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faCode}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div onClick={strikethrough}>
+      <div onClick={strikethrough} className={props.editor?.isActive('strike') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faStrikethrough}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div onClick={bullet_list}>
+      <div onClick={bullet_list} className={props.editor?.isActive('bulletList') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faList}
-          transform="grow-10"
+          size='2x'
           className={props.editor?.isActive('bold') ? 'is-active' : ''}
         />
       </div>
-      <div onClick={ordered_list}>
+      <div onClick={ordered_list} className={props.editor?.isActive('orderedList') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faListOl}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div onClick={heading_one}>
+      <div onClick={heading_one} className={props.editor?.isActive('heading') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faHeading}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div onClick={blockquote}>
+      <div onClick={blockquote} className={props.editor?.isActive('blockquote') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faQuoteLeft}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div onClick={code_block}>
+      <div onClick={code_block} className={props.editor?.isActive('codeBlock') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faCodeBranch}
-          transform="grow-10"
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          size='2x'
         />
       </div>
-      <div >
-        <FontAwesomeIcon onClick={horizontal_rule} icon={faRulerHorizontal} transform="grow-10" />
+      <div onClick={horizontal_rule} className={props.editor?.isActive('horizontalRule') ? 'is-active' : ''}>
+        <FontAwesomeIcon
+          icon={faRulerHorizontal}
+          size='2x'
+        />
       </div>
-      <div className="save-button" onClick={save}>
-        <FontAwesomeIcon icon={faFloppyDisk} transform="grow-20"/>
+      <div className="icon float-right" onClick={save}>
+        <FontAwesomeIcon
+        icon={faFloppyDisk}
+        size='3x'
+      />
       </div>
     </div>
   )
