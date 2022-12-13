@@ -81,14 +81,22 @@ article {
   }
 }
 
-.edit-button {
-  position: relative;
-  top: 0;
-  right: 0;
-}
-
-.icon:hover {
+.icon {
+  z-index: 1;
   cursor: pointer;
+  position: absolute;
+  padding: 5px;
+
+  &.float-left {
+    float: left;
+    left: -125px;
+  }
+
+  &.float-right {
+    position: relative;
+    float: right;
+    right: -75px;
+  }
 }
 
 @media screen and (max-width: 600px) {

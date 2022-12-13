@@ -7,7 +7,7 @@ import Underline from "@tiptap/extension-underline";
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 
 export interface TiptapProps {
@@ -64,6 +64,24 @@ const Tiptap = (props: TiptapProps) => {
     })
   }
 
+  function deletePost(): void {
+    if (!editor) return
+
+    const title = editor.state.doc.firstChild?.textContent ?? "Untitled"
+
+    fetch('/api/deletePost', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title,
+      })
+    }).then(_response => {
+      router.push('/')
+    })
+  }
+
   let content = props.content
   if (props.content == null) {
     content = "<h1>Insert Title Here</h1><p>Start typing here...</p>"
@@ -97,9 +115,14 @@ const Tiptap = (props: TiptapProps) => {
     return (
       <article>
         { session &&
-          <div onClick={() => setEditMode(true)} className="icon">
-          <FontAwesomeIcon icon={faPenToSquare} transform="grow-20" />
-          </div>
+          <>
+            <div onClick={() => setEditMode(true)} className="icon float-left">
+              <FontAwesomeIcon icon={faPenToSquare} size="3x"/>
+            </div>
+            <div onClick={() => deletePost()} className="icon float-right">
+              <FontAwesomeIcon icon={faTrashCan} size="3x" />
+            </div>
+          </>
         }
         <EditorContent editor={editor} />
         <h5>{`Last updated ${props.updated}`}</h5>

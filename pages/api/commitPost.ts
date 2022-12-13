@@ -1,10 +1,26 @@
 import { Octokit } from "@octokit/rest"
 import { Base64 } from "js-base64"
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSHA } from "./getSHA";
+import { getSHA } from "../../lib/getSHA";
 import { GenerateSlug } from "../../lib/GenerateSlug";
+import { unstable_getServerSession } from "next-auth/next"
+import { authOptions } from "./auth/[...nextauth]"
+
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== "POST") {
+    res.statusCode = 405;
+    res.send("Method not allowed");
+    return;
+  }
+
+  const session = await unstable_getServerSession(req, res, authOptions)
+  if (!session) {
+    res.statusCode = 401;
+    res.send("Unauthorized");
+    return;
+  }
+
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN
   })
