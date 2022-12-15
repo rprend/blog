@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import Topbar from "../components/Topbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowCircleRight, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import RecommendationsTiptap from "../components/RecommendationsTiptap";
 
 export default function Home({ allPostsData }) {
   const { data: session } = useSession();
@@ -36,7 +37,18 @@ export default function Home({ allPostsData }) {
           ))}
         </div>
         <div className="sidebar">
-          <h5>Recommendations</h5>
+          <h5>Recommendations
+          <a>
+          <FontAwesomeIcon
+            icon={faPenToSquare}
+            style={{"marginLeft": "10px"}}
+          ></FontAwesomeIcon>
+          </a>
+          </h5>
+          <RecommendationsTiptap
+            editable={false}
+            content={"hiya"}
+          ></RecommendationsTiptap>
           <a target='_blank' href="https://youtube.com/watch?v=zDsDCRVVCYw" rel="noreferrer">ryans youtube</a>
         </div>
       </div>
