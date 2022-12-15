@@ -19,7 +19,7 @@ export default function MinimalTiptap(props: MinimalTiptapProps) {
   })
 
   return (
-    <div>
+    <div className="minimal-editor">
       <EditorContent editor={editor} />
     </div>
   )

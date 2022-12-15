@@ -1,10 +1,9 @@
 html {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 a {
   cursor: pointer;
-  text-decoration: underline;
 }
 
 main {
@@ -34,7 +33,7 @@ main {
     .posts {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      line-height: 1.7;
     }
     a {
       &:hover {
@@ -76,14 +75,15 @@ main {
 }
 
 p {
-  line-height: 1.66;
-  margin: 0 0 2em 0;
   font-size: 1.4rem;
-  line-height: 2rem;
 }
 
 h1 {
   font-size: 3.2rem;
+}
+
+.ProseMirror:focus-visible {
+  outline: none;
 }
 
 article {
@@ -91,8 +91,23 @@ article {
   position: relative;
   margin: 5rem 0;
 
-  .ProseMirror:focus-visible {
-    outline: none;
+  a {
+    text-decoration: underline;
+  }
+
+  p {
+    line-height: 1.66;
+    margin: 0 0 2em 0;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+}
+
+.minimal-editor {
+  p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 16px;
   }
 }
 
