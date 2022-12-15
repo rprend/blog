@@ -3,6 +3,8 @@ import { PostPreview } from "../components/PostPreview";
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import Topbar from "../components/Topbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home({ allPostsData }) {
   const { data: session } = useSession();
@@ -15,8 +17,12 @@ export default function Home({ allPostsData }) {
         <div className="posts">
           <h5>Recent Posts</h5>
           {session &&
-            <Link href="/create">
+            <Link href="/create" style={{"margin": "0 0 20px 0"}}>
               <b>Create a new post</b>
+              <FontAwesomeIcon
+                icon={faArrowCircleRight}
+                style={{"marginLeft": "10px"}}
+              ></FontAwesomeIcon>
             </Link>
           }
           {allPostsData.map(({ slug, date, title, excerpt }) => (
