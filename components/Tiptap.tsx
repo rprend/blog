@@ -118,10 +118,10 @@ const Tiptap = (props: TiptapProps) => {
       <article>
         { session &&
           <>
-            <div onClick={() => setEditMode(true)} className="icon float-left">
+            <div onClick={() => setEditMode(true)} className="icon main-icon float-left">
               <FontAwesomeIcon icon={faPenToSquare} size="3x"/>
             </div>
-            <div onClick={() => deletePost()} className="icon float-right">
+            <div onClick={() => deletePost()} className="icon main-icon float-right">
               <FontAwesomeIcon icon={faTrashCan} size="3x" />
             </div>
           </>

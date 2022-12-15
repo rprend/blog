@@ -71,7 +71,7 @@ export const MenuBar = (props: MenuBarProps) => {
 
   return (
     <div className="menu-container">
-      <div onClick={props.onPreview} className="icon float-left">
+      <div onClick={props.onPreview} className="icon main-icon float-left">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           size='3x'
@@ -150,7 +150,7 @@ export const MenuBar = (props: MenuBarProps) => {
           size='2x'
         />
       </div>
-      <div className="icon float-right" onClick={save}>
+      <div className="icon main-icon float-right" onClick={save}>
         <FontAwesomeIcon
         icon={faFloppyDisk}
         size='3x'

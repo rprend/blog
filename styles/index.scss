@@ -108,13 +108,26 @@ article {
     line-height: 1.7;
     font-size: 16px;
   }
+
+  .tooltip-bar {
+    display: flex;
+    gap: 15px;
+    padding: 3px 10px;
+    background-color: #FFFBED;
+    border-radius: 5px;
+    box-shadow:  0 0 0 1px rgba(0,0,0,.1), 0 2px 4px rgba(0,0,0,.08);
+
+  }
 }
 
 .icon {
   z-index: 1;
   cursor: pointer;
-  position: absolute;
-  padding: 5px;
+
+  &.main-icon {
+    position: absolute;
+    padding: 5px;
+  }
 
   &.float-left {
     float: left;

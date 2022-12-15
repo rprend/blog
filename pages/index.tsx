@@ -47,9 +47,8 @@ export default function Home({ allPostsData }) {
           </h5>
           <MinimalTiptap
             editable={true}
-            content={"hiya"}
+            content={`ryans youtube`}
           ></MinimalTiptap>
-          <a target='_blank' href="https://youtube.com/watch?v=zDsDCRVVCYw" rel="noreferrer">ryans youtube</a>
         </div>
       </div>
     </main>
