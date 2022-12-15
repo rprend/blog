@@ -2,6 +2,7 @@ import { BubbleMenu, Editor, EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import TiptapLink from '@tiptap/extension-link'
 import { faBold, faItalic, faLink, faUnderline } from "@fortawesome/free-solid-svg-icons";
 
 export interface MinimalTiptapProps {
@@ -30,7 +31,8 @@ export default function MinimalTiptap(props: MinimalTiptapProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      Underline
+      Underline,
+      TiptapLink
     ],
     content: props.content,
     editable: props.editable
