@@ -42,25 +42,25 @@ export default function MinimalTiptap(props: MinimalTiptapProps) {
     <div className="minimal-editor">
       { editor && <BubbleMenu editor={editor}>
       <div className="tooltip-bar">
-        <div onClick={() => bold(editor)} className={editor?.isActive('bold') ? 'is-active' : ''}>
+        <div onClick={() => bold(editor)} className={editor?.isActive('bold') ? 'is-active icon' : 'icon'}>
           <FontAwesomeIcon
             icon={faBold}
             size="lg"
           />
         </div>
-        <div onClick={() => italic(editor)} className={editor?.isActive('italic') ? 'is-active' : ''}>
+        <div onClick={() => italic(editor)} className={editor?.isActive('italic') ? 'is-active icon' : 'icon'}>
           <FontAwesomeIcon
             icon={faItalic}
             size="lg"
           />
         </div>
-        <div onClick={() => underline(editor)} className={editor?.isActive('underline') ? 'is-active' : ''}>
+        <div onClick={() => underline(editor)} className={editor?.isActive('underline') ? 'is-active icon' : 'icon'}>
           <FontAwesomeIcon
             icon={faUnderline}
             size="lg"
           />
         </div>
-        <div onClick={() => link(editor)} className={editor?.isActive('link') ? 'is-active' : ''}>
+        <div onClick={() => link(editor)} className={editor?.isActive('link') ? 'is-active icon' : 'icon'}>
           <FontAwesomeIcon
             icon={faLink}
             size="lg"
