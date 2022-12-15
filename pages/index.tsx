@@ -13,26 +13,25 @@ export default function Home({ allPostsData }) {
       <Topbar></Topbar>
       <div className="homepage-container">
         <div className="posts">
-          Posts
+          <h5>Recent Posts</h5>
           {session &&
             <Link href="/create">
-              <PostPreview
-                title="Create a new post"
-                excerpt="Click here to create a new post"
-              ></PostPreview>
-            <hr />
+              <b>Create a new post</b>
             </Link>
           }
           {allPostsData.map(({ slug, date, title, excerpt }) => (
-            <Link href={`/blog/${slug}`} key={slug}>
-              <PostPreview
-                title = {title}
-                date = {date}
-                excerpt = {excerpt}
-              />
-            <hr />
-            </Link>
+            <PostPreview
+              title = {title}
+              date = {date}
+              excerpt = {excerpt}
+              slug = {slug}
+              key = {slug}
+            />
           ))}
+        </div>
+        <div className="sidebar">
+          <h5>Recommendations</h5>
+          <a target='_blank' href="https://youtube.com/watch?v=zDsDCRVVCYw" rel="noreferrer">ryans youtube</a>
         </div>
       </div>
     </main>
