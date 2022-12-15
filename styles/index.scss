@@ -2,23 +2,23 @@ html {
   font-size: 15px;
 }
 
-.sidebar {
-  width: 250px;
-  margin-right: 50px;
-  text-align: center;
-  border-right: 1px solid #ccc;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
 main {
-  margin-left: 260px;
   margin-right: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-right: 50px;
+
+  .topbar {
+    width: 100%;
+    text-align: center;
+
+    .navigation {
+      display: flex;
+      gap: 15px;
+    }
+  }
 
   .homepage-container {
-
     hr {
       width: 100%;
     }
@@ -26,7 +26,6 @@ main {
     .posts {
       display: flex;
       flex-direction: column;
-      margin-top: 40vh;
     }
     a {
       &:hover {
@@ -118,7 +117,7 @@ article {
     margin: 0;
     .homepage-container {
       flex-direction: column;
-      .sidebar {
+      .topbar {
         width: 100%;
         height: fit-content;
         border-right: none;

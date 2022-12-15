@@ -1,11 +1,11 @@
 import { useSession, signIn, signOut } from 'next-auth/react'
-import Sidebar from '../components/Sidebar';
+import Topbar from '../components/Topbar';
 
 export default function Admin() {
   const { data: session } = useSession();
   return (
     <main>
-      <Sidebar></Sidebar>
+      <Topbar></Topbar>
       <h1>Admin</h1>
       {session &&
         <>

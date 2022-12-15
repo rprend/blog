@@ -2,16 +2,18 @@ import { readPosts } from "../lib/ReadPosts";
 import { PostPreview } from "../components/PostPreview";
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
-import Sidebar from "../components/Sidebar";
+import Topbar from "../components/Topbar";
 
 export default function Home({ allPostsData }) {
   const { data: session } = useSession();
 
   return (
+    <>
     <main>
+      <Topbar></Topbar>
       <div className="homepage-container">
-        <Sidebar></Sidebar>
         <div className="posts">
+          Posts
           {session &&
             <Link href="/create">
               <PostPreview
@@ -34,6 +36,7 @@ export default function Home({ allPostsData }) {
         </div>
       </div>
     </main>
+    </>
   )
 }
 
