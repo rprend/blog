@@ -1,7 +1,7 @@
 import { Editor } from "@tiptap/react";
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faBold, faItalic, faUnderline, faCode, faStrikethrough, faList, faListOl, faHeading, faQuoteLeft, faCodeBranch, faRulerHorizontal, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faBold, faItalic, faUnderline, faLink, faCode, faStrikethrough, faList, faListOl, faHeading, faQuoteLeft, faCodeBranch, faRulerHorizontal, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
 
 
 export interface MenuBarProps {
@@ -24,6 +24,10 @@ export const MenuBar = (props: MenuBarProps) => {
 
   function underline() {
     props.editor?.chain().focus().toggleUnderline().run()
+  }
+
+  function link() {
+    props.editor?.chain().focus().toggleLink({ href: "https://example.com" }).run()
   }
 
   function code() {
@@ -88,6 +92,12 @@ export const MenuBar = (props: MenuBarProps) => {
       <div onClick={underline} className={props.editor?.isActive('underline') ? 'is-active' : ''}>
         <FontAwesomeIcon
           icon={faUnderline}
+          size='2x'
+        />
+      </div>
+      <div onClick={link} className={props.editor?.isActive('link') ? 'is-active' : ''}>
+        <FontAwesomeIcon
+          icon={faLink}
           size='2x'
         />
       </div>

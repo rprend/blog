@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 import Topbar from "../components/Topbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import RecommendationsTiptap from "../components/RecommendationsTiptap";
+import MinimalTiptap from "../components/MinimalTiptap";
 
 export default function Home({ allPostsData }) {
   const { data: session } = useSession();
@@ -45,10 +45,10 @@ export default function Home({ allPostsData }) {
           ></FontAwesomeIcon>
           </a>
           </h5>
-          <RecommendationsTiptap
-            editable={false}
+          <MinimalTiptap
+            editable={true}
             content={"hiya"}
-          ></RecommendationsTiptap>
+          ></MinimalTiptap>
           <a target='_blank' href="https://youtube.com/watch?v=zDsDCRVVCYw" rel="noreferrer">ryans youtube</a>
         </div>
       </div>

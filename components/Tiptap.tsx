@@ -4,6 +4,7 @@ import StarterKit from "@tiptap/starter-kit";
 import React from "react";
 import { MenuBar } from "./MenuBar";
 import Underline from "@tiptap/extension-underline";
+import TiptapLink from '@tiptap/extension-link'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -91,7 +92,8 @@ const Tiptap = (props: TiptapProps) => {
     extensions: [
       StarterKit,
       CharacterCount,
-      Underline
+      Underline,
+      TiptapLink
     ],
     content,
     editable: editing

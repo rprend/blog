@@ -2,13 +2,13 @@ import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 
-export interface RecommendationsTiptapProps {
+export interface MinimalTiptapProps {
   content: string,
   editable: boolean,
   updated?: Date
 }
 
-export default function RecommendationsTiptap(props: RecommendationsTiptapProps) {
+export default function MinimalTiptap(props: MinimalTiptapProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
