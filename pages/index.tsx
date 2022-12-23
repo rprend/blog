@@ -12,7 +12,7 @@ export default function Home({ allPostsData }) {
 
   return (
     <>
-    <main className="flex flex-row place-content-center">
+    <main className="flex flex-row place-content-center min-h-screen bg-slate-50 text-zinc-900">
       <div className="flex flex-col w-3/4 md:w-2/3 lg:w-1/2">
         <Topbar></Topbar>
         <div className="flex flex-row justify-between gap-5 flex-wrap">
