@@ -101,7 +101,7 @@ const Tiptap = (props: TiptapProps) => {
 
 
     return (
-      <div className="w-3/4 md:w-2/3 lg:w-1/2 prose lg:prose-xl prose-zinc max-w-none">
+      <div className="w-3/4 md:w-2/3 mr-20 mt-20 lg:w-1/2 prose lg:prose-xl prose-zinc max-w-none">
         { editing &&
           <>
             <MenuBar
