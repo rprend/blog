@@ -116,10 +116,10 @@ const Tiptap = (props: TiptapProps) => {
         }
         { session &&
           <>
-            <div onClick={() => setEditMode(true)} className="relative float-left z-10 -left-100 hover:cursor-pointer">
+            <div onClick={() => setEditMode(true)} className="relative float-left z-10 left-30 hover:cursor-pointer">
               <FontAwesomeIcon icon={faPenToSquare} size="3x"/>
             </div>
-            <div onClick={() => deletePost()} className="relative float-right z-10 -right-100 hover:cursor-pointer">
+            <div onClick={() => deletePost()} className="relative float-right z-10 right-100 hover:cursor-pointer">
               <FontAwesomeIcon icon={faTrashCan} size="3x" />
             </div>
           </>
