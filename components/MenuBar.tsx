@@ -71,7 +71,7 @@ export const MenuBar = (props: MenuBarProps) => {
 
   return (
     <div className="flex flex-row gap-5">
-      <div onClick={props.onPreview} className="icon main-icon float-left">
+      <div onClick={props.onPreview} className="hover:cursor-pointer relative float-right z-10 left-100">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           size='3x'
@@ -150,7 +150,7 @@ export const MenuBar = (props: MenuBarProps) => {
           size='2x'
         />
       </div>
-      <div className="icon main-icon float-right" onClick={save}>
+      <div className="hover:cursor-pointer relative float-right z-10 left-100" onClick={save}>
         <FontAwesomeIcon
         icon={faFloppyDisk}
         size='3x'
