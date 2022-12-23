@@ -9,7 +9,7 @@ export default function Post(params) {
 
   return (
     <>
-    <main>
+    <main className="flex flex-row place-content-center">
       <Tiptap
         editable={false}
         content={post.content}

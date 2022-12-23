@@ -70,81 +70,81 @@ export const MenuBar = (props: MenuBarProps) => {
   }
 
   return (
-    <div className="menu-container">
+    <div className="flex flex-row gap-5">
       <div onClick={props.onPreview} className="icon main-icon float-left">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           size='3x'
         />
       </div>
-      <div onClick={bold} className={props.editor?.isActive('bold') ? 'is-active' : ''}>
+      <div onClick={bold} className={`hover:cursor-pointer ${props.editor?.isActive('bold') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faBold}
           size='2x'
         />
       </div>
-      <div onClick={italic} className={props.editor?.isActive('italic') ? 'is-active' : ''}>
+      <div onClick={italic} className={`hover:cursor-pointer ${props.editor?.isActive('italic') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faItalic}
           size='2x'
         />
       </div>
-      <div onClick={underline} className={props.editor?.isActive('underline') ? 'is-active' : ''}>
+      <div onClick={underline} className={`hover:cursor-pointer ${props.editor?.isActive('underline') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faUnderline}
           size='2x'
         />
       </div>
-      <div onClick={link} className={props.editor?.isActive('link') ? 'is-active' : ''}>
+      <div onClick={link} className={`hover:cursor-pointer ${props.editor?.isActive('link') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faLink}
           size='2x'
         />
       </div>
-      <div onClick={code} className={props.editor?.isActive('code') ? 'is-active' : ''}>
+      <div onClick={code} className={`hover:cursor-pointer ${props.editor?.isActive('code') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faCode}
           size='2x'
         />
       </div>
-      <div onClick={strikethrough} className={props.editor?.isActive('strike') ? 'is-active' : ''}>
+      <div onClick={strikethrough} className={`hover:cursor-pointer ${props.editor?.isActive('strike') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faStrikethrough}
           size='2x'
         />
       </div>
-      <div onClick={bullet_list} className={props.editor?.isActive('bulletList') ? 'is-active' : ''}>
+      <div onClick={bullet_list} className={`hover:cursor-pointer ${props.editor?.isActive('bulletList') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faList}
           size='2x'
-          className={props.editor?.isActive('bold') ? 'is-active' : ''}
+          className={`hover:cursor-pointer ${props.editor?.isActive('bold') ? 'text-amber-500' : ''}`}
         />
       </div>
-      <div onClick={ordered_list} className={props.editor?.isActive('orderedList') ? 'is-active' : ''}>
+      <div onClick={ordered_list} className={`hover:cursor-pointer ${props.editor?.isActive('orderedList') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faListOl}
           size='2x'
         />
       </div>
-      <div onClick={heading_one} className={props.editor?.isActive('heading') ? 'is-active' : ''}>
+      <div onClick={heading_one} className={`hover:cursor-pointer ${props.editor?.isActive('heading') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faHeading}
           size='2x'
         />
       </div>
-      <div onClick={blockquote} className={props.editor?.isActive('blockquote') ? 'is-active' : ''}>
+      <div onClick={blockquote} className={`hover:cursor-pointer ${props.editor?.isActive('blockquote') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faQuoteLeft}
           size='2x'
         />
       </div>
-      <div onClick={code_block} className={props.editor?.isActive('codeBlock') ? 'is-active' : ''}>
+      <div onClick={code_block} className={`hover:cursor-pointer ${props.editor?.isActive('codeBlock') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faCodeBranch}
           size='2x'
         />
       </div>
-      <div onClick={horizontal_rule} className={props.editor?.isActive('horizontalRule') ? 'is-active' : ''}>
+      <div onClick={horizontal_rule} className={`hover:cursor-pointer ${props.editor?.isActive('horizontalRule') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faRulerHorizontal}
           size='2x'

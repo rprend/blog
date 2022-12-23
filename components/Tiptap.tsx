@@ -99,38 +99,37 @@ const Tiptap = (props: TiptapProps) => {
     editable: editing
   })
 
-  if (editing) {
+
     return (
-      <article>
-        <MenuBar
-          editor={editor}
-          onSave={onSave}
-          onPreview={() => setEditMode(false)}
-        />
-        <div className="character-count">
-          <b>Word Count: </b>{editor?.storage.characterCount.characters()} characters, {editor?.storage.characterCount.words()} words
-        </div>
-        <EditorContent editor={editor} />
-      </article>
-    )
-  } else {
-    return (
-      <article>
+      <div className="w-3/4 md:w-2/3 lg:w-1/2 prose lg:prose-xl prose-zinc max-w-none">
+        { editing &&
+          <>
+            <MenuBar
+            editor={editor}
+            onSave={onSave}
+            onPreview={() => setEditMode(false)}
+            />
+            <div className="character-count">
+              <b>Word Count: </b>{editor?.storage.characterCount.characters()} characters, {editor?.storage.characterCount.words()} words
+            </div>
+          </>
+        }
         { session &&
           <>
-            <div onClick={() => setEditMode(true)} className="icon main-icon float-left">
+            <div onClick={() => setEditMode(true)} className="relative float-left z-10 -left-100 hover:cursor-pointer">
               <FontAwesomeIcon icon={faPenToSquare} size="3x"/>
             </div>
-            <div onClick={() => deletePost()} className="icon main-icon float-right">
+            <div onClick={() => deletePost()} className="relative float-right z-10 -right-100 hover:cursor-pointer">
               <FontAwesomeIcon icon={faTrashCan} size="3x" />
             </div>
           </>
         }
         <EditorContent editor={editor} />
-        <h5>{`Last updated ${props.updated}`}</h5>
-      </article>
+        <div>
+          <h5>{`Last updated ${props.updated}`}</h5>
+        </div>
+      </div>
     )
-  }
 }
 
 export default Tiptap
