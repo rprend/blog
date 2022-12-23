@@ -37,7 +37,7 @@ export default function Home({ allPostsData }) {
           ))}
         </div>
         <div className="sidebar">
-          <h5>Recommendations
+          <h5 className="text-3xl">Recommendations
           <a>
           <FontAwesomeIcon
             icon={faPenToSquare}
