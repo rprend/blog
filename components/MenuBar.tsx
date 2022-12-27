@@ -70,13 +70,20 @@ export const MenuBar = (props: MenuBarProps) => {
   }
 
   return (
-    <div className="flex flex-row gap-5 relative float-top float-left -left-20">
-      <div onClick={props.onPreview} className="hover:cursor-pointer relative float-right z-10 left-100">
+    <div>
+    <div onClick={props.onPreview} className="hover:cursor-pointer absolute float-left z-10 left-52">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           size='3x'
         />
-      </div>
+    </div>
+    <div className="hover:cursor-pointer relative float-right z-10 left-100" onClick={save}>
+        <FontAwesomeIcon
+        icon={faFloppyDisk}
+        size='3x'
+      />
+    </div>
+    <div className="flex flex-row gap-5 relative float-top float-left -left-20">
       <div onClick={bold} className={`hover:cursor-pointer ${props.editor?.isActive('bold') ? 'text-amber-500' : ''}`}>
         <FontAwesomeIcon
           icon={faBold}
@@ -150,12 +157,7 @@ export const MenuBar = (props: MenuBarProps) => {
           size='2x'
         />
       </div>
-      <div className="hover:cursor-pointer relative float-right z-10 left-100" onClick={save}>
-        <FontAwesomeIcon
-        icon={faFloppyDisk}
-        size='3x'
-      />
-      </div>
+    </div>
     </div>
   )
 }

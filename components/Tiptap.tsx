@@ -1,7 +1,7 @@
 import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import CharacterCount from '@tiptap/extension-character-count'
 import StarterKit from "@tiptap/starter-kit";
-import React from "react";
+import React, { useState } from "react";
 import { MenuBar } from "./MenuBar";
 import Underline from "@tiptap/extension-underline";
 import TiptapLink from '@tiptap/extension-link'
@@ -9,7 +9,8 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-
+import { Button, Modal } from 'flowbite-react'
+import { HiOutlineExclamationCircle } from 'react-icons/hi'
 
 export interface TiptapProps {
   content?: string,
@@ -83,6 +84,12 @@ const Tiptap = (props: TiptapProps) => {
     })
   }
 
+  const [show_modal, set_show_modal] = useState(false)
+  function onClick() {
+    console.log("clicked")
+    set_show_modal(true)
+  }
+
   let content = props.content
   if (props.content == null) {
     content = "<h1>Insert Title Here</h1><p>Start typing here...</p>"
@@ -109,19 +116,51 @@ const Tiptap = (props: TiptapProps) => {
             onSave={onSave}
             onPreview={() => setEditMode(false)}
             />
-            <div className="character-count">
+            <div className="mt-4 mb-4">
               <b>Word Count: </b>{editor?.storage.characterCount.characters()} characters, {editor?.storage.characterCount.words()} words
             </div>
           </>
         }
         { session &&
           <>
-            <div onClick={() => setEditMode(true)} className="relative float-left z-10 left-30 hover:cursor-pointer">
+            <div onClick={() => setEditMode(true)} className="absolute float-left z-10 left-52 hover:cursor-pointer">
               <FontAwesomeIcon icon={faPenToSquare} size="3x"/>
             </div>
-            <div onClick={() => deletePost()} className="relative float-right z-10 right-100 hover:cursor-pointer">
+
+            <React.Fragment>
+            <div onClick={onClick} className="absolute float-right z-10 right-52 hover:cursor-pointer" data-modal-toggle="popup-modal">
               <FontAwesomeIcon icon={faTrashCan} size="3x" />
             </div>
+            <Modal
+              show={show_modal}
+              size="md"
+              popup={true}
+            >
+              <Modal.Header />
+              <Modal.Body>
+                <div className="text-center">
+                  <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+                  <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                    Are you sure you want to delete this product?
+                  </h3>
+                  <div className="flex justify-center gap-4">
+                    <Button
+                      color="failure"
+                      onClick={() => { set_show_modal(false); deletePost() } }
+                    >
+                      Yes, I&apos;m sure
+                    </Button>
+                    <Button
+                      color="gray"
+                      onClick={() => set_show_modal(false)}
+                    >
+                      No, cancel
+                    </Button>
+                  </div>
+                </div>
+              </Modal.Body>
+            </Modal>
+          </React.Fragment>
           </>
         }
         <EditorContent editor={editor} />
