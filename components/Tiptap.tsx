@@ -61,7 +61,7 @@ const Tiptap = (props: TiptapProps) => {
         content: json,
         excerpt: exceprt
       })
-    }).then(_response => {
+    }).then(() => {
       router.push('/')
     })
   }
@@ -79,7 +79,7 @@ const Tiptap = (props: TiptapProps) => {
       body: JSON.stringify({
         title,
       })
-    }).then(_response => {
+    }).then(() => {
       router.push('/')
     })
   }
